@@ -1,0 +1,1942 @@
+<html>
+<head>
+<script src="/cdn-cgi/apps/head/gaU__wMkiLKoYpaQsLOEZjFIPTI.js"></script><link href="css/style.css" type="text/css" rel="stylesheet">
+	<title>RadioSai Schedule</title>
+<script type="text/javascript">
+function dcheck()
+{
+	document.forms[0].dchange.value= 1;
+	check();
+}
+function check()
+{
+	document.forms[0].action= "/program/Index.php";
+	document.forms[0].target= "";
+	document.forms[0].submit();
+}
+
+function todayFullSchedule()
+{
+	document.forms[0].dchange.value= 0;
+	document.forms[0].action= "/program/Index.php";
+	document.forms[0].target= "";
+	document.forms[0].todays.value= "1";
+	document.forms[0].submit();
+}
+
+function checkall()
+{
+	var val= false;
+	if(document.forms[0].checkallcb.checked)
+		val= true;
+	if(document.forms[0].chosencb[0])
+		for(i= 0;i < document.forms[0].chosencb.length; i++)
+			document.forms[0].chosencb[i].checked= val;
+	else if(document.forms[0].chosencb)
+		document.forms[0].chosencb.checked= val;
+}
+
+function dnload(dcounter)
+{
+	var str= "";
+	if(document.forms[0].dfids)
+	{
+		if(document.forms[0].dfids[dcounter])
+			str= document.forms[0].dfids[dcounter].value;
+		else if(document.forms[0].dfids)
+			str= document.forms[0].dfids.value;
+	}
+	document.forms[0].allfids.value= str;
+	document.forms[0].action= "Download.php";
+	document.forms[0].target= "_blank";
+	document.forms[0].submit();
+}
+
+function playnow()
+{
+	var str= "";
+	if(!document.forms[0].chosencb)
+	{
+		alert("There are no programmes to play");
+		return;
+	}
+	if(document.forms[0].chosencb[1])
+	{
+		for(i= 0;i < document.forms[0].chosencb.length;i++)
+		{
+			if(document.forms[0].chosencb[i].checked)
+			{
+				if(str != "")
+					str+= ",";
+				str+= document.forms[0].fids[i].value;
+			}
+		}
+	}
+	else if(document.forms[0].chosencb)
+	{
+		if(document.forms[0].chosencb.checked)
+			str= document.forms[0].fids.value;
+	}
+	if(str == "")
+	{
+		alert("Kindly choose some programmes to play")
+		return;
+	}
+	document.forms[0].allfids.value= str;
+	document.forms[0].action= "Play.php";
+	document.forms[0].target= "_blank";
+	document.forms[0].submit();
+}
+
+
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+  <tbody><tr>
+    <td align="center" height="100%" valign="top">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="780">
+        <tbody><tr>
+          <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody><tr>
+                
+                
+                
+              </tr>
+              <tr>
+                <td colspan="2" valign="bottom"><table border="0" cellpadding="0" cellspacing="0" height="32" width="100%">
+                    <tbody><tr>
+                      
+                  </tbody></table></td>
+              </tr>
+            </tbody></table>
+            <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+              <tbody><tr>
+                <td valign="top" width="9%"><table border="0"  cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                      
+                    </tr>
+                  </tbody></table></td>
+                <td valign="top" width="88%"> <table border="1" bordercolor="#ff9933" cellpadding="0" cellspacing="0" height="100%" width="100%">
+                    <tbody><tr>
+                      
+                      <td align="center" bgcolor="#f7e5d7" valign="top" width="611" height="400" cellpadding="9" cellspacing="0">
+                        
+<br>
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+<form name="scheduleForm" method="post" action="/program/Index.php">
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#999999">
+                                <tr align="center" valign="middle" bgcolor="#FDD9C4">
+                                  <td width="50%" ><div align="center" ><a href='http://www.radiosai.org/' >
+				Home...</a></div></td>
+<td width="50%" ><div align="center" ><a href='http://www.radiosai.org/Pages/Streaming_Audio.htm' >
+				Detailed instructions for listening...</a></div></td>
+</tr>
+</table>
+<br>
+<table width="75%" align="center" border="1" style="border-collapse: collapse" bordercolor="#ff9933" height="50" cellpadding="3">
+<tr>
+	<td><table width="100%"  border="0">
+		<tr>
+			<td  style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">Choose the Station:</td>
+			<td> <select name="streamId" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana" onchange='check();'>
+								<option value="3" 
+							   >
+							   AfriStream				</option>				<option value="2" 
+							   >
+							   AmeriStream				</option>				<option value="1" 
+							   selected>
+							   AsiaStream				</option>				<option value="6" 
+							   >
+							   DiscourseStream				</option>				<option value="5" 
+							   >
+							   TeluguStream				</option>				</select>
+			</td>
+		</tr>
+		<tr>
+			<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">Choose the Category:</td>
+			<td> <select name="category" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;" onchange='check();'>
+				<option value="">Any</option>				<option value="Bhajan" 
+								>
+								Bhajan				</option>				<option value="Concert" 
+								>
+								Concert				</option>				<option value="Discourse" 
+								>
+								Discourse				</option>				<option value="Instrumental" 
+								>
+								Instrumental				</option>				<option value="Song" 
+								>
+								Song				</option>				<option value="Special" 
+								>
+								Special				</option>				</select>
+			</td>
+		</tr>
+		<tr>
+			<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">Choose the TimeZone:</td>
+			<td> <select name="zoneId" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;" onchange='check();'>
+								<option value="89" 
+								>
+								ANTIGUA AND BARBUDA				</option>				<option value="2" 
+								>
+								ARGENTINA				</option>				<option value="3" 
+								>
+								AUSTRALIA NSW				</option>				<option value="8" 
+								>
+								AUSTRIA				</option>				<option value="9" 
+								>
+								BAHRAIN				</option>				<option value="10" 
+								>
+								BELGIUM				</option>				<option value="11" 
+								>
+								BOLIVIA				</option>				<option value="12" 
+								>
+								BOSNIA				</option>				<option value="16" 
+								>
+								BRAZ-EAST				</option>				<option value="15" 
+								>
+								BRAZ-MAT-GROS				</option>				<option value="17" 
+								>
+								BRAZ-NORTH				</option>				<option value="18" 
+								>
+								BRAZ-WEST				</option>				<option value="13" 
+								>
+								BRAZIL-CAP				</option>				<option value="14" 
+								>
+								BRAZIL-FDN				</option>				<option value="82" 
+								>
+								BRITAIN				</option>				<option value="19" 
+								>
+								BULGARIA				</option>				<option value="20" 
+								>
+								CANADA-ALBERTA				</option>				<option value="22" 
+								>
+								CANADA-MANITOBA				</option>				<option value="23" 
+								>
+								CANADA-MONTREAL				</option>				<option value="21" 
+								>
+								CANADA-VANCOUVER				</option>				<option value="24" 
+								>
+								CHILE				</option>				<option value="25" 
+								>
+								COLOMBIA				</option>				<option value="87" 
+								>
+								COSTA RICA				</option>				<option value="26" 
+								>
+								CROATIA				</option>				<option value="27" 
+								>
+								CUBA				</option>				<option value="28" 
+								>
+								ECUADOR				</option>				<option value="29" 
+								>
+								EL SALVADOR				</option>				<option value="30" 
+								>
+								FIJI				</option>				<option value="31" 
+								>
+								GABON				</option>				<option value="32" 
+								>
+								GERMANY				</option>				<option value="33" 
+								>
+								GHANA				</option>				<option value="34" 
+								>
+								GREECE				</option>				<option value="35" 
+								>
+								GUATEMALA				</option>				<option value="36" 
+								>
+								GUYANA				</option>				<option value="37" 
+								>
+								HAITI				</option>				<option value="38" 
+								>
+								HAWAII				</option>				<option value="39" 
+								>
+								HONG KONG				</option>				<option value="40" 
+								>
+								HUNGARY				</option>				<option value="1" 
+								selected>
+								INDIA				</option>				<option value="42" 
+								>
+								INDONESIA-CIT				</option>				<option value="43" 
+								>
+								INDONESIA-TIMUR				</option>				<option value="44" 
+								>
+								INDONESIA-WIB				</option>				<option value="45" 
+								>
+								ISRAEL				</option>				<option value="46" 
+								>
+								ITALY				</option>				<option value="47" 
+								>
+								JAPAN				</option>				<option value="48" 
+								>
+								KENYA				</option>				<option value="49" 
+								>
+								KOREA				</option>				<option value="50" 
+								>
+								LATVIA				</option>				<option value="51" 
+								>
+								LITHUANIA				</option>				<option value="52" 
+								>
+								MACEDONIA				</option>				<option value="53" 
+								>
+								MALAWI				</option>				<option value="54" 
+								>
+								MALAYSIA				</option>				<option value="55" 
+								>
+								MAURITIUS				</option>				<option value="56" 
+								>
+								MEXICO				</option>				<option value="57" 
+								>
+								NEPAL				</option>				<option value="58" 
+								>
+								NEW ZEALAND				</option>				<option value="59" 
+								>
+								NICARAGUA				</option>				<option value="60" 
+								>
+								NIGERIA				</option>				<option value="61" 
+								>
+								OMAN				</option>				<option value="62" 
+								>
+								PANAMA				</option>				<option value="63" 
+								>
+								PARAGUAY				</option>				<option value="64" 
+								>
+								PERU				</option>				<option value="65" 
+								>
+								PHILIPPINES				</option>				<option value="66" 
+								>
+								POLAND				</option>				<option value="88" 
+								>
+								PUERTO RICO				</option>				<option value="67" 
+								>
+								RUSSIA-MOSCOW				</option>				<option value="68" 
+								>
+								SAUDI ARABIA				</option>				<option value="69" 
+								>
+								SINGAPORE				</option>				<option value="70" 
+								>
+								SOUTH AFRICA				</option>				<option value="71" 
+								>
+								SPAIN				</option>				<option value="72" 
+								>
+								SRI LANKA				</option>				<option value="73" 
+								>
+								SWEDEN				</option>				<option value="74" 
+								>
+								SWITZERLAND				</option>				<option value="75" 
+								>
+								TAIWAN				</option>				<option value="76" 
+								>
+								TANZANIA				</option>				<option value="77" 
+								>
+								THAILAND				</option>				<option value="78" 
+								>
+								TRINIDAD				</option>				<option value="81" 
+								>
+								UAE				</option>				<option value="79" 
+								>
+								UGANDA				</option>				<option value="80" 
+								>
+								UKRAINE				</option>				<option value="83" 
+								>
+								URUGUAY				</option>				<option value="7" 
+								>
+								US CST				</option>				<option value="5" 
+								>
+								US EST				</option>				<option value="6" 
+								>
+								US MST				</option>				<option value="4" 
+								>
+								US PST				</option>				<option value="84" 
+								>
+								VENEZUELA				</option>				<option value="90" 
+								>
+								WEST INDIES				</option>				<option value="85" 
+								>
+								ZAMBIA				</option>				<option value="86" 
+								>
+								ZIMBABWE				</option>				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">
+			<input type="checkbox" name="setChosen" value="y" 
+				checked>
+				Set Chosen TimeZone as default
+			</td>
+		</tr>
+		<tr>
+			<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">Choose Date:</td>
+			<td><select name="currentDate" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;" onChange="javascript:dcheck()">
+								<option value="2020-03-31" 
+								>
+								31-Mar-2020				</option>				<option value="2020-04-01" 
+								>
+								01-Apr-2020				</option>				<option value="2020-04-02" 
+								>
+								02-Apr-2020				</option>				<option value="2020-04-03" 
+								>
+								03-Apr-2020				</option>				<option value="2020-04-04" 
+								>
+								04-Apr-2020				</option>				<option value="2020-04-05" 
+								>
+								05-Apr-2020				</option>				<option value="2020-04-06" 
+								>
+								06-Apr-2020				</option>				<option value="2020-04-07" 
+								>
+								07-Apr-2020				</option>				<option value="2020-04-08" 
+								>
+								08-Apr-2020				</option>				<option value="2020-04-09" 
+								>
+								09-Apr-2020				</option>				<option value="2020-04-10" 
+								>
+								10-Apr-2020				</option>				<option value="2020-04-11" 
+								>
+								11-Apr-2020				</option>				<option value="2020-04-12" 
+								>
+								12-Apr-2020				</option>				<option value="2020-04-13" 
+								>
+								13-Apr-2020				</option>				<option value="2020-04-14" 
+								>
+								14-Apr-2020				</option>				<option value="2020-04-15" 
+								>
+								15-Apr-2020				</option>				<option value="2020-04-16" 
+								>
+								16-Apr-2020				</option>				<option value="2020-04-17" 
+								>
+								17-Apr-2020				</option>				<option value="2020-04-18" 
+								>
+								18-Apr-2020				</option>				<option value="2020-04-19" 
+								>
+								19-Apr-2020				</option>				<option value="2020-04-20" 
+								>
+								20-Apr-2020				</option>				<option value="2020-04-21" 
+								>
+								21-Apr-2020				</option>				<option value="2020-04-22" 
+								>
+								22-Apr-2020				</option>				<option value="2020-04-23" 
+								>
+								23-Apr-2020				</option>				<option value="2020-04-24" 
+								>
+								24-Apr-2020				</option>				<option value="2020-04-25" 
+								>
+								25-Apr-2020				</option>				<option value="2020-04-26" 
+								>
+								26-Apr-2020				</option>				<option value="2020-04-27" 
+								>
+								27-Apr-2020				</option>				<option value="2020-04-28" 
+								>
+								28-Apr-2020				</option>				<option value="2020-04-29" 
+								>
+								29-Apr-2020				</option>				<option value="2020-04-30" 
+								>
+								30-Apr-2020				</option>				<option value="2020-05-01" 
+								>
+								01-May-2020				</option>				<option value="2020-05-02" 
+								>
+								02-May-2020				</option>				<option value="2020-05-03" 
+								>
+								03-May-2020				</option>				<option value="2020-05-04" 
+								>
+								04-May-2020				</option>				<option value="2020-05-05" 
+								>
+								05-May-2020				</option>				<option value="2020-05-06" 
+								>
+								06-May-2020				</option>				<option value="2020-05-07" 
+								>
+								07-May-2020				</option>				<option value="2020-05-08" 
+								>
+								08-May-2020				</option>				<option value="2020-05-09" 
+								selected>
+								09-May-2020				</option>				<option value="2020-05-10" 
+								>
+								10-May-2020				</option>				<option value="2020-05-11" 
+								>
+								11-May-2020				</option>				<option value="2020-05-12" 
+								>
+								12-May-2020				</option>				</select><input type="hidden" name="dchange" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;" colspan="2" align="center">
+			<input type="hidden" name="todays" value="0">
+			 (or) <a href="javascript:todayFullSchedule()">Return to today's full schedule</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;" colspan="2" align="right">
+			<input type="button" name="btnSubmit" value="Show Schedule" onClick="javascript:check()"></td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<table width="90%" align="center">
+	<tr>
+		<td colspan="2" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">
+    <br>
+    <table width="85%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#999999">
+                                <tr align="center" valign="middle" bgcolor="#FDD9C4">
+                                  <td width="15%" height="15" onMouseOver="this.bgColor='#990000';this.style.cursor='hand';one.style.color='#FFFFFF'" onMouseOut="this.bgColor='#FDD9C4';one.style.color='#990000'"><a href='http://www.radiosai.org/Pages/AsiaStream.pls'  target="_blank">
+				Click here to listen online now...</a></td>
+
+
+                                  <td width="15%" height="15" onMouseOver="this.bgColor='#990000';this.style.cursor='hand';one.style.color='#FFFFFF'" onMouseOut="this.bgColor='#FDD9C4';one.style.color='#990000'"><a href='http://www.radiosai.org/Pages/AsiaStream.asx' target="_blank">
+				Click here to listen with Windows Media Player...</a></td>
+                          </tr>
+                        </table>
+		
+			<br>
+			<table width="85%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#999999">
+                                <tr align="center" valign="middle" bgcolor="#FDD9C4">
+                                  <td width="15%" height="15" onMouseOver="this.bgColor='#990000';this.style.cursor='hand';" onMouseOut="this.bgColor='#FDD9C4';"><a href='SW1.php' >
+				Click here to search for earlier programmes...</a></td>
+
+                          </tr>
+                        </table>
+                        <br>
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#999999">
+                                <tr align="center" valign="middle" bgcolor="#FDD9C4">
+                                  <td width="50%" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;"><div align="center" class="Head17"><strong>BhajanStream</strong></div></td>
+<td width="50%" style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;"><div align="center" ><strong>DiscourseStream</strong></div></td>
+</tr>
+
+<tr bgcolor="#F5DDC9" >
+
+<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;"><a href="http://www.radiosai.org/Pages/BhajanStream.pls" target="_blank" onClick="javascript:urchinTracker ('/bhajanstream_pls'); ">Click here to listen</a> or <br><a href="http://www.radiosai.org/Pages/BhajanStream.asx" target="_blank" onClick="javascript:urchinTracker ('/bhajanstream_asx'); ">Listen with Windows Media Player</a></td>
+<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;"><a href="http://www.radiosai.org/Pages/DiscourseStream.pls" target="_blank" onClick="javascript:urchinTracker ('/discoursestream_pls'); ">Click here to listen</a> or <br><a href="http://www.radiosai.org/Pages/DiscourseStream.asx" target="_blank" onClick="javascript:urchinTracker ('/discoursestream_asx'); ">Listen with Windows Media Player</a></td>
+
+                          </tr>
+                        </table>
+                        <br>
+                        </td>
+	</tr>
+	<tr><td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">
+	In order to listen to a particular programme at a time of your convenience, click on the check-box to the <strong>LEFT</strong> of the programme in the table below and click on the "Listen" button at the top of the table. <br><br>To download a programme to your hard-disk, choose the download link &nbsp;<img src="download.png" >&nbsp; on the <strong>RIGHT</strong> of the programme in the table below.<br><br>&nbsp;
+
+</td>
+	</tr>
+	
+	<tr>
+		<td style="FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Verdana;">
+			<input type="hidden" name="allfids">
+			<input type="button" name="btnPlay" value="Listen" onClick="javascript:playnow()">
+			
+		</td>
+	</tr>
+</table>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+<table width="90%" border="0" cellspacing="1" cellpadding="5" bordercolor="#3399ff" bgColor="#ffccbc">
+	<tr  bgcolor="#E6E6CC">
+		
+		<th width="4%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Listen</strong></font><br>
+			<input type="checkbox" name="checkallcb" onClick="javascript:checkall()">
+		</th>
+		
+		<th width="4%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>SL. No.</strong></font>
+		</th>
+		
+		<th width="18%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Time 
+			<br>(IST)</strong></font>
+		</th>
+		
+		<th width="18%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Time <br> (GMT)</strong></font>
+		</th>
+		
+		<th width="52%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Programme List</strong></font>
+		</th>
+		
+		<th width="4%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Duration <br>(min)</strong></font>
+		</th>
+		
+		<th width="4%"  bgcolor="#E6E6CC">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="COLOR: purple"><strong>Download</strong></font>
+		</th>
+	</tr>
+
+		<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="6920,12376,8086,8089,14637,6931,8090,8221,8229,8087,8225,11055">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12:10 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:40 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Sai Students Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				56			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="6920,12376,8086,8089,14637,6931,8090,8221,8229,8087,8225,11055">
+					<a href="javascript:dnload(0)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="15954,15955,15956,15957,15958,15959,15960,15961,10505,10506,10507,10510">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:00 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:30 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Songs by Sai Students on Convocation night<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				31			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="15954,15955,15956,15957,15958,15959,15960,15961,10505,10506,10507,10510">
+					<a href="javascript:dnload(1)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="6908">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:30 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Concert</strong></font><br><br>
+				Vocal concert by Sri P. Krishnamurthy on 8th July 2006 - first broadcast on 2006-07-23<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				29			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="6908">
+					<a href="javascript:dnload(2)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="11567,11565,11568,11570">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:00 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:30 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans sung by Suresh Wadkar<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				19			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="11567,11565,11568,11570">
+					<a href="javascript:dnload(3)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="11602,11603,11317,11411,11606,11415,11421,11605,11607,11609,11611,11613,11615">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:20 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:50 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans - Sai Geetham<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				52			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="11602,11603,11317,11411,11606,11415,11421,11605,11607,11609,11611,11613,11615">
+					<a href="javascript:dnload(4)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="18092,18093,18094,18096,18095,18097,18098,18099,18100,18102,18101,18103,18104,18106,18105,18107,18108">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3:15 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:45 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Carols sung by the students of Sri Sathya Sai Institute of Higher Learning in the Divine presence - 2002<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				33			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="18092,18093,18094,18096,18095,18097,18098,18099,18100,18102,18101,18103,18104,18106,18105,18107,18108">
+					<a href="javascript:dnload(5)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="10189,10190">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3:45 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:15 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Readings from the Sikh scripture the Guru Granth Sahib - first broadcast on 2007-03-26<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				53			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="10189,10190">
+					<a href="javascript:dnload(6)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="14245,8906,6968,9116,10520">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:40 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:10 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Vedic Chants - first broadcast on 2007-03-09<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				30			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="14245,8906,6968,9116,10520">
+					<a href="javascript:dnload(7)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="25794">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:10 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:40 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Omkaram Suprabhatam and Gayatri Mantra chant by Bhagawan - first broadcast on 2011-07-22<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				16			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="25794">
+					<a href="javascript:dnload(8)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="10404">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:20 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:50 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Moments of Oneness - Sanathana Dharma - Devotional Music, Chanting and Readings from the Scriptures - first broadcast on 2007-02-03<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				55			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="10404">
+					<a href="javascript:dnload(9)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="17307,12506">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:20 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12:50 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Instrumental</strong></font><br><br>
+				Instrumental songs<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				14			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="17307,12506">
+					<a href="javascript:dnload(10)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="5410">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:30 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Chanting of Stotrams by the students of Sri Sathya Sai Institute of Higher Learning<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="5410">
+					<a href="javascript:dnload(11)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="14261">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				13			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:40 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:10 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Discourse</strong></font><br><br>
+				Divine Discourse on 20 May 2002 during the Summer Course in Indian Culture and Spirituality - <a href=http://www.sssbpt.info/summershowers/ss2002/ss2002d06.pdf target=_blank>Click here</a> for text version from Summer Showers - first broadcast on 2002-07-22<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				47			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="14261">
+					<a href="javascript:dnload(12)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="47258,47259,47260">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				14			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:20 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:50 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Devotional songs by devotees from Gujarat in October 2019<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="47258,47259,47260">
+					<a href="javascript:dnload(13)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="8931,13727,17117,16224,6197,17118,16906,17120">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				15			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:40 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:10 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Instrumental</strong></font><br><br>
+				Instrumental Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				21			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="8931,13727,17117,16224,6197,17118,16906,17120">
+					<a href="javascript:dnload(14)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				16			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:00 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:30 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Live broadcast from Prasanthi Nilayam&nbsp; <font  size='2' style='COLOR: purple'> - <strong>NEW!</strong></font><br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				91			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="25600">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				17			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:30 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Sai Gayatri<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				15			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="25600">
+					<a href="javascript:dnload(15)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="23713">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				18			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:45 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:15 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Talking Book - Sai Baba Man of Miracles - Chapter 12 part 2 - first broadcast on 2010-10-04<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				22			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="23713">
+					<a href="javascript:dnload(16)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="47192,47193,47194,47196">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				19			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:10 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:40 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Devotional songs in Nepali - Hajurko Prasad Hajurlai Nai<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				20			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="47192,47193,47194,47196">
+					<a href="javascript:dnload(17)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="6218,5967,7464,7164,6097,7330,6103,7466">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				20			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:30 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans sung by Bhagawan Sri Sathya Sai Baba<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				23			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="6218,5967,7464,7164,6097,7330,6103,7466">
+					<a href="javascript:dnload(18)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="36016">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				21			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:50 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:20 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Short Bhajan Tutor - Yug Yug ke Avatar Tumhi ho - first broadcast on 2014-09-04<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="36016">
+					<a href="javascript:dnload(19)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="6883,6882,16272,9146,9254,8822,20794,6881">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				22			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:00 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:30 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Prasanthi Mandir Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				30			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="6883,6882,16272,9146,9254,8822,20794,6881">
+					<a href="javascript:dnload(20)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="9662">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				23			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:30 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Discourse</strong></font><br><br>
+				Divine Discourse on 21st August 2004 on MBA day - <a href=http://sssbpt.info/ssspeaks/volume37/sss37-12.pdf target=_blank>Click here</a> for text version from Sathya Sai Speaks - first broadcast on 2004-09-11<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				35			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="9662">
+					<a href="javascript:dnload(21)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="15091,15092,15093,15094,15095,15096,15097,15098">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				24			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12:10 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:40 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Songs by Kerala devotees during Onam celebrations in September 2003<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				34			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="15091,15092,15093,15094,15095,15096,15097,15098">
+					<a href="javascript:dnload(22)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="7766,13108,7767,18161,16140">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				25			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12:40 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:10 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Instrumental</strong></font><br><br>
+				Instrumental Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				19			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="7766,13108,7767,18161,16140">
+					<a href="javascript:dnload(23)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="13079,13081,13083,13085,13679,13681">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				26			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:00 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:30 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans by devotees from Saudi Arabia<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				19			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="13079,13081,13083,13085,13679,13681">
+					<a href="javascript:dnload(24)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="41011,41012,41013,41014,41015,41016">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				27			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:20 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:50 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Concert</strong></font><br><br>
+				Concert by Sri Sai Vignesh Ramakrishnan during the Kancheepuram district Tamil Nadu Parthi Yatra on 27 February 2016 - first broadcast on 2016-05-14<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				30			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="41011,41012,41013,41014,41015,41016">
+					<a href="javascript:dnload(25)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="41017,41018,41019,41020,41021,41022,41023,41024,41025">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				28			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:50 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:20 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans from South Africa - Swami Inspires Us<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				38			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="41017,41018,41019,41020,41021,41022,41023,41024,41025">
+					<a href="javascript:dnload(26)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="23612">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				29			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Discourse</strong></font><br><br>
+				Divine Discourse on 24 November 1980 on how to win the Love of God - <a href=http://sssbpt.info/ssspeaks/volume14/sss14-59.pdf target=_blank>Click here</a> for text version from Sathya Sai Speaks - first broadcast on 2010-09-18<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				61			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="23612">
+					<a href="javascript:dnload(27)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="6190,11040,11678,11043,6185,11046,8664,11677,11048,10172">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				30			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Devotional songs sung by Suresh Wadkar<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				60			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="6190,11040,11678,11043,6185,11046,8664,11677,11048,10172">
+					<a href="javascript:dnload(28)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="14066,8371,13598,13601,14024">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				31			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:00 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				23			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="14066,8371,13598,13601,14024">
+					<a href="javascript:dnload(29)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="17118,16906,17120">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				32			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:50 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:20 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Instrumental</strong></font><br><br>
+				Instrumental Bhajans<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="17118,16906,17120">
+					<a href="javascript:dnload(30)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				33			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:00 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:30 AM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Live broadcast from Prasanthi Nilayam&nbsp; <font  size='2' style='COLOR: purple'> - <strong>NEW!</strong></font><br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				91			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="44746,44746">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				34			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Chanting - Sai Gayatri<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="44746,44746">
+					<a href="javascript:dnload(31)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="48087">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				35			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:45 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				1:15 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Vahini Satsang - 133 - Sandeha Nivarini - with Mr. K V R K Bhargav and Mr. Srinivas Rao&nbsp; <font  size='2' style='COLOR: purple'> - <strong>NEW!</strong></font><br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				53			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="48087">
+					<a href="javascript:dnload(32)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="46008">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				36			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				7:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				2:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Tamil broadcast - 440 - Conversation with alumnus Sri C Chandrasekharan - Rama Katha Rasa Vahini reading - Deivathin Arulurai - 22 July 2008 part 1 - first broadcast on 2018-12-22<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				60			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="46008">
+					<a href="javascript:dnload(33)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="23713">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				37			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				8:40 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3:10 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Talking Book - Sai Baba Man of Miracles - Chapter 12 part 2 - first broadcast on 2010-10-04<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				22			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="23713">
+					<a href="javascript:dnload(34)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="47192,47193,47194,47195,47196,47197">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				38			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:00 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				3:30 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Song</strong></font><br><br>
+				Devotional songs in Nepali - Hajurko Prasad Hajurlai Nai<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				30			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="47192,47193,47194,47195,47196,47197">
+					<a href="javascript:dnload(35)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="11591">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				39			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				4:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Special</strong></font><br><br>
+				Drama by the students of Sri Sathya Sai Institute of Higher Learning on the occasion of their 24th Convocation - Prem ki Jyothi - first broadcast on 2006-03-02<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				61			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="11591">
+					<a href="javascript:dnload(36)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="18489">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				40			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				10:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Discourse</strong></font><br><br>
+				Divine Discourse - 23 June 1996 - first broadcast on 2008-06-23<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				49			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="18489">
+					<a href="javascript:dnload(37)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="13993,16067">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				41			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:20 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				5:50 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Instrumental</strong></font><br><br>
+				Instrumental Bhajans - Close to You<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				9			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="13993,16067">
+					<a href="javascript:dnload(38)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="15658,18113,15662,15664,8197,15661">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				42			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				11:30 PM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:00 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Bhajan</strong></font><br><br>
+				Bhajans by Sai Students<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				24			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="15658,18113,15662,15664,8197,15661">
+					<a href="javascript:dnload(39)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+			<tr bgcolor="#E6E6CC">
+			<td valign="top" align="center" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+								<input type="checkbox" name="chosencb">
+				<input type="hidden" name="fids" value="8675,8677,8676">
+							</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				43			</td>
+			
+			<td  valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				12:00 AM			</td>
+			
+			<td valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				6:30 PM			</td>
+			
+			<td  width="58%" style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				<font color="#999900" ><strong>Concert</strong></font><br><br>
+				Sitar Concert by the Khan brothers on 15th August 2006 at Prasanthi Nilayam during the Ati Rudra Maha Yagnam - first broadcast on 2006-09-03<br><br>
+			</td>
+			
+			<td  valign="top" align="center"   style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+				31			</td>
+			
+			<td valign="top" align="center"  style="font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px;">
+									<input type="hidden" name="dfids" value="8675,8677,8676">
+					<a href="javascript:dnload(40)" style="text-decoration:none" 
+					onMouseOver="window.status='';return true;">
+					<img src="download.png" alt="Download" border="0" 
+					onMouseOver="this.src='download_on.png'" onMouseOut="this.src='download.png'"></a>
+							</td>
+		</tr>
+	</table>
+</form>
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- pasting from footer -->
+<hr color="brown" size="1" width="90%" align="center">                    
+
+<p align="right"><a href="#" style="text-decoration:none" ><img src="top.gif" alt="top"  style="text-decoration:none" ></p></a><br>
+                        </td>
+                      
+                    </tr>
+                  </tbody></table>
+                </td>
+                <td valign="top" width="3%"> <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                      
+                    </tr>
+                  </tbody></table></td>
+              </tr>
+            </tbody></table> </td>
+        </tr>
+        
+<tr>
+          <td valign="top"><table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+              <tbody><tr>
+                <td valign="top" width="76">&nbsp;</td>
+                <td valign="top" width="644">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100">
+                    <tbody><tr>
+                      
+                    </tr>
+                  </tbody></table>
+                </td>
+                <td valign="top" width="57">&nbsp; </td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+
+      </tbody></table>
+    </td>
+    <td valign="top" width="30%">
+    <br><br><br><br><br>
+    
+    <a class="twitter-timeline"  href="https://twitter.com/sghradiosai"  data-widget-id="347202777698672642" data-chrome="noheader" width="300" height="900" >Tweets by @sghradiosai</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </td>
+  </tr>
+</tbody></table>
+<!-- InstanceEnd -->
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  _uacct = "UA-351372-1";
+  urchinTracker();
+</script>
+
+</body></html>
+
