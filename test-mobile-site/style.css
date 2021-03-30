@@ -1,0 +1,184 @@
+
+
+body {
+  width: 1000px;
+  overflow-x: scroll;
+  margin: auto;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+}
+
+header {
+  font-size: 0;
+}
+
+nav {
+  border-top: 1px solid black;
+  border-left: 2px solid #aac5d9;
+  border-right: 2px solid #aac5d9;
+  border-bottom: 2px solid #AAAAAA;
+
+  font-weight: 700;
+
+  /* margin: auto;
+  width: 950px; */
+}
+
+.nav-bar {
+  display: inline-block;
+  padding: 5px 28.5625px 5px 28.5625px;
+  border-left: 1px solid #aac5d9;
+  border-right: 1px solid #aac5d9;
+  margin: 0;
+  color: black;
+
+  background-image: linear-gradient(#fff, #D9D4CE);
+}
+
+.nav-bar-link:first-of-type > div {
+  border-left: 0px solid #aac5d9;
+}
+
+.nav-bar-link:last-of-type > div {
+  border-right: 0px solid #aac5d9;
+}
+
+.nav-bar-padding {
+  display: inline-block;
+  /* padding: 5px 24.83px 5px 25px; */
+  margin: 0;
+  
+  background-image: linear-gradient(#fff, #D9D4CE);
+}
+
+#main-content {
+  position: relative;
+  height: 263px;
+  background-color: #D1C8C9;
+}
+
+#main-content-swamis-photo {
+  display: inline;
+  /* float: left; */
+}
+
+#main-description {
+  /* display: inline; */
+  /* height: 263px; */
+  /* margin: 0; */
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin: 0 50px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Book Antiqua;
+}
+
+#main-description > p:first-of-type {
+  margin: 0;
+  /* transform: translateY(-100%); */
+}
+
+.hospital-list {
+  max-width: 1000px;
+}
+
+.hospital-group {
+  display: inline-block;
+}
+
+.hospital-group--name {
+  text-transform: uppercase;
+  white-space: break-spaces;
+  font-size: 15px;
+  /* padding: 10px 10px; */
+  margin: 10px auto;
+  text-align: center;
+  font-weight: 600;
+}
+
+#sathya-sai-medical-institutes {
+  max-width: 368px;
+}
+
+#sathya-sai-mobile-hospitals {
+  max-width: 188px;
+}
+
+#sathya-sai-general-hospitals {
+  max-width: 200px;
+}
+
+.other-sites-list {
+  width: 100%;
+}
+
+.other-sites-list > div {
+  display: inline-block;
+  width: 33%;
+  position: relative;
+  height: 13px;
+}
+
+.other-sites-list > div > a {
+  text-decoration: none;
+  color: black;
+  font-family: Verdana;
+  color: #6351a9;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+#guiding-philosophy-dropdown {
+  z-index: 2;
+  position: absolute;
+  margin: 0;
+  background-color: rgb(205, 204, 225);
+  border: solid black 1px;
+}
+
+#guiding-philosophy-dropdown > a {
+  text-decoration: none;
+  color: black;
+}
+
+#guiding-philosophy-dropdown > a > p {
+  margin: 0;
+  padding: 0 10px 0 10px;
+  font: normal 13px Trebuchet MS;
+  text-decoration: none;
+  /* border: solid black 1px; */
+}
+
+#guiding-philosophy-dropdown > a > p:hover {
+  margin: 0;
+  padding: 0 10px 0 10px;
+  
+  /* border: solid black 1px; */
+  background-color: #024E3C;
+  color: #FFFFFF;
+}
+
+#guiding-philosophy-dropdown > a:first-of-type > p:first-of-type {
+  border-bottom: solid black 1px;
+}
+
+#copyright {
+  color: #000000;
+  font-family: Verdana;
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+}
+
+#copyright > p {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
