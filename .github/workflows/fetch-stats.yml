@@ -103,7 +103,7 @@ jobs:
 
       - name: Copy dashboard HTML
         run: |
-          cp index.html docs/index.html
+          cp stats.html docs/index.html
 
       - name: Commit and push
         run: |
