@@ -95,20 +95,20 @@ jobs:
               "repos": stats
           }
 
-          os.makedirs("docs", exist_ok=True)
-          with open("docs/stats.json", "w") as f:
+          os.makedirs("stats", exist_ok=True)
+          with open("stats/stats.json", "w") as f:
               json.dump(output, f, indent=2)
-          print("Saved docs/stats.json")
+          print("Saved stats/stats.json")
           EOF
 
-      - name: Copy dashboard HTML
-        run: |
-          cp stats.html docs/index.html
+      #- name: Copy dashboard HTML
+      #  run: |
+      #    cp stats.html docs/index.html
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
+          git add stats/
           git diff --staged --quiet || git commit -m "chore: update traffic stats $(date -u +%Y-%m-%d)"
           git push
