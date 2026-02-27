@@ -8,16 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #18181f;
-    --border: #1e1e2a;
-    --accent: #7fff6e;
-    --accent2: #6ebaff;
-    --accent3: #ff6eb4;
-    --text: #e8e8f0;
-    --muted: #6060780;
-    --muted2: #606078;
+    --bg: #f6f8fa;
+    --surface: #ffffff;
+    --surface2: #f6f8fa;
+    --border: #d0d7de;
+    --accent: #1a7f37;
+    --accent2: #0969da;
+    --accent3: #cf222e;
+    --text: #1f2328;
+    --muted: #57606a;
+    --muted2: #57606a;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,19 +29,6 @@
     font-size: 13px;
     min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  /* Grid noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(127,255,110,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(127,255,110,0.015) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
   }
 
   .wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -65,7 +52,7 @@
 
   h1 em {
     font-style: normal;
-    color: var(--accent);
+    color: var(--accent2);
     display: block;
   }
 
@@ -99,7 +86,7 @@
     font-family: 'Fraunces', serif;
     font-size: 2.4rem;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent2);
     display: block;
     line-height: 1;
     margin-bottom: 6px;
@@ -137,8 +124,8 @@
     border-radius: 2px;
   }
 
-  .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .sort-btn.active { background: var(--accent); border-color: var(--accent); color: #000; }
+  .sort-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+  .sort-btn.active { background: var(--accent2); border-color: var(--accent2); color: #fff; }
 
   /* Search */
   .search-wrap { margin-left: auto; }
@@ -187,7 +174,7 @@
     position: absolute;
     left: 0; top: 0; bottom: 0;
     width: 2px;
-    background: var(--accent);
+    background: var(--accent2);
     opacity: 0;
     transition: opacity 0.15s;
   }
@@ -203,7 +190,7 @@
     text-decoration: none;
     flex: 1;
   }
-  .repo-name:hover { color: var(--accent); }
+  .repo-name:hover { color: var(--accent2); }
 
   .lang-badge {
     font-size: 10px;
@@ -237,10 +224,10 @@
   }
 
   .stat-box { background: var(--bg); padding: 10px 8px; text-align: center; }
-  .stat-box .n { display: block; font-size: 1.15rem; font-weight: 500; color: var(--accent); }
-  .stat-box.blue .n { color: var(--accent2); }
+  .stat-box .n { display: block; font-size: 1.15rem; font-weight: 500; color: var(--accent2); }
+  .stat-box.blue .n { color: #6639ba; }
   .stat-box.pink .n { color: var(--accent3); }
-  .stat-box.gold .n { color: #ffd96e; }
+  .stat-box.gold .n { color: #9a6700; }
   .stat-box .l { display: block; font-size: 10px; color: var(--muted2); margin-top: 2px; letter-spacing: 0.05em; }
 
   /* Sparkline */
@@ -334,7 +321,9 @@
 </div>
 
 <footer>
-  <div class="wrap">Auto-updated daily via GitHub Actions &mdash; data from GitHub Traffic API (14-day window)</div>
+  <div class="wrap">Auto-updated daily via GitHub Actions &mdash; data from GitHub Traffic API (14-day window)<br><br>
+  <a href="https://github.com/hn-88/hn-88.github.io/blob/master/stats/prompt.md" target="_blank" rel="noopener" style="color:var(--accent2);text-decoration:none;">Prompt used to generate this page</a>
+  </div>
 </footer>
 
 <script>
@@ -404,7 +393,7 @@ function renderRepos(repos) {
         <span class="lang-badge">${repo.language}</span>
       </div>
       ${repo.description ? `<div class="repo-desc">${repo.description}</div>` : ''}
-      <div class="sparkline-wrap" title="Views (14 days)">${sparkline(viewsDailyArr, '--accent')}</div>
+      <div class="sparkline-wrap" title="Views (14 days)">${sparkline(viewsDailyArr, '--accent2')}</div>
       <div class="stats-row">
         <div class="stat-box"><span class="n">${fmt(views)}</span><span class="l">Views</span></div>
         <div class="stat-box blue"><span class="n">${fmt(uniques)}</span><span class="l">Visitors</span></div>
