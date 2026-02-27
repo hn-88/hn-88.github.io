@@ -5,3 +5,7 @@ _Does github have a shareable page showing traffic statistics of all my repos?_
 and then a follow-up prompt,
 
 _Yes - please write a github action with a cron job which will get the stats from all my public repos and display on a html page. I will create a repo to host this and share via github pages._
+
+After that, 
+
+_Please modify index.html to use a light theme similar to github's theme instead of the current dark theme. Also, please add a link at the bottom of the page, saying prompt used to generate this page, linking to https://github.com/hn-88/hn-88.github.io/blob/master/stats/prompt.md_
