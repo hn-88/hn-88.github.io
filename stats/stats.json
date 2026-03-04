@@ -1,6 +1,6 @@
 {
   "username": "hn-88",
-  "generated_at": "2026-03-03T06:59:36.770708Z",
+  "generated_at": "2026-03-04T06:55:07.930002Z",
   "repos": [
     {
       "name": "FDOCT",
@@ -7425,7 +7425,7 @@
       "forks": 0,
       "language": "HTML",
       "html_url": "https://github.com/hn-88/hn-88.github.io",
-      "updated_at": "2026-03-02T07:04:33Z",
+      "updated_at": "2026-03-03T06:59:41Z",
       "views": {
         "count": 0,
         "uniques": 0,
@@ -15090,14 +15090,9 @@
       "html_url": "https://github.com/hn-88/sgct-test-builds-v2",
       "updated_at": "2025-07-05T04:27:35Z",
       "views": {
-        "count": 0,
-        "uniques": 0,
+        "count": 1,
+        "uniques": 1,
         "views": [
-          {
-            "timestamp": "2026-02-16T00:00:00Z",
-            "count": 0,
-            "uniques": 0
-          },
           {
             "timestamp": "2026-02-17T00:00:00Z",
             "count": 0,
@@ -15162,6 +15157,11 @@
             "timestamp": "2026-03-01T00:00:00Z",
             "count": 0,
             "uniques": 0
+          },
+          {
+            "timestamp": "2026-03-02T00:00:00Z",
+            "count": 1,
+            "uniques": 1
           }
         ]
       },
@@ -15169,11 +15169,6 @@
         "count": 8,
         "uniques": 6,
         "clones": [
-          {
-            "timestamp": "2026-02-16T00:00:00Z",
-            "count": 0,
-            "uniques": 0
-          },
           {
             "timestamp": "2026-02-17T00:00:00Z",
             "count": 0,
@@ -15238,11 +15233,29 @@
             "timestamp": "2026-03-01T00:00:00Z",
             "count": 0,
             "uniques": 0
+          },
+          {
+            "timestamp": "2026-03-02T00:00:00Z",
+            "count": 0,
+            "uniques": 0
           }
         ]
       },
-      "referrers": [],
-      "paths": []
+      "referrers": [
+        {
+          "referrer": "DuckDuckGo",
+          "count": 1,
+          "uniques": 1
+        }
+      ],
+      "paths": [
+        {
+          "path": "/hn-88/sgct-test-builds-v2/issues/1",
+          "title": "error: 'to_chars' is unavailable: introduced in macOS 13.3 \u00b7 Issue #1 \u00b7 hn-88...",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     },
     {
       "name": "ShiraPlayer2.2.0",
