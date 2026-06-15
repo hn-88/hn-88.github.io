@@ -5,6 +5,6 @@ Links to some github pages
 
 2. <a href='https://github.com/hn-88?tab=repositories'>List of repositories</a>
 
-3. <a href='https://hn-88.github.io/stats'>Traffic statistics of my public repositories</a>
+3. <a href='https://hn-88.github.io/stats'>Traffic statistics of my public repositories - not planning to update this proof of concept after 15 June 2026</a>
 
 4. <a href='https://hn-88.github.io/OpenSpace-AppImage/'>OpenSpace (unofficial) daily builds</a>
